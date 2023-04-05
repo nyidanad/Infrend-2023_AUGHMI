@@ -1,0 +1,54 @@
+<div style="margin: 10px; height: 100%; overflow: hidden">
+  <h1 class="text-2xl font-bold">Infrend 2023: H4</h1>
+  <h5 class="mb-2">Nyíri Dániel (AUGHMI)</h5>
+  <hr class="mb-4">
+
+  <form (ngSubmit)="addRecord()" #recordForm="ngForm">
+    <div class="mb-4">
+      <label class="block font-bold mb-2" for="name">Name</label>
+      <input style="width: 500px; border-width: medium;" type="text" class="border rounded w-full py-2 px-3" id="name" name="name" [(ngModel)]="newRecord.name">
+    </div>
+
+    <div class="mb-4">
+      <label class="block font-bold mb-2" for="email">Email</label>
+      <input style="width: 500px; border-width: medium;" type="text" class="border rounded w-full py-2 px-3" id="email" name="email" [(ngModel)]="newRecord.email">
+    </div>
+
+    <div class="mb-4">
+      <label class="block font-bold mb-2" for="phone">Phone</label>
+      <input style="width: 500px; border-width: medium;" type="text" class="border rounded w-full py-2 px-3" id="phone" name="phone" [(ngModel)]="newRecord.phone">
+    </div>
+
+    <div class="mb-4">
+      <label class="block font-bold mb-2" for="address">Address</label>
+      <input style="width: 500px; border-width: medium;" type="text" class="border rounded w-full py-2 px-3" id="address" name="address" [(ngModel)]="newRecord.address">
+    </div>
+
+    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" type="submit" [disabled]="recordForm.invalid">Add Record</button>
+  </form>
+
+  <table class="table-auto mt-8">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">ID</th>
+        <th class="px-4 py-2">Name</th>
+        <th class="px-4 py-2">Email</th>
+        <th class="px-4 py-2">Phone</th>
+        <th class="px-4 py-2">Address</th>
+        <th class="px-4 py-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of records">
+        <td class="border px-4 py-2">{{ record.id }}</td>
+        <td class="border px-4 py-2">{{ record.name }}</td>
+        <td class="border px-4 py-2">{{ record.email }}</td>
+        <td class="border px-4 py-2">{{ record.phone }}</td>
+        <td class="border px-4 py-2">{{ record.address }}</td>
+        <td class="border px-4 py-2">
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="deleteRecord(record.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
