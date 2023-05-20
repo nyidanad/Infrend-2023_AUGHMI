@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row-mt-2">
+        <div class="col-md-6">
+            <h4 style="margin-top: 50px;">New joke</h4>
+            <hr>
+            <div class="mb-3">
+                <input style="width: 100%; border-width: medium;" type="text" class="border rounded w-full py-2 px-3" id="username" name="username" [(ngModel)]="newJoke.username" placeholder="Username">
+            </div>
+
+            <div class="mb-2">
+                <textarea style="width: 100%; border-width: medium;" rows="4" class="border rounded w-full py-2 px-3" id="joke" name="joke" [(ngModel)]="newJoke.joke" placeholder="Joke"> </textarea>
+            </div>
+                
+            <div class="mb-2">
+                <button (click)="addJoke()" class="btn btn-outline-primary" style="float: right;">Submit</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="row-mt-2">
+        <div class="col-md-6">
+            <h3>Jokes List</h3>
+            <p>Overall stats: {{ totalVotes() }} votes (😂{{ totalLikes }}, 😕 {{ totalDislikes }})</p>
+            <hr>
+        </div>
+    </div>
+    
+
+    <div class="row-mt-2">
+        <div class="col-md-6">
+            <div *ngFor="let joke of jokes">
+                <span><b>By: {{joke.username}}</b></span>
+                    <div style="display: flex;">
+                        <button (click)="like(joke)" class="btn btn-outline-success" style="margin-right: 10px;"> 😂 {{ joke.likes }}</button>
+                        <button (click)="dislike(joke)" class="btn btn-outline-danger" style="margin-right: 20px;"> 😕 {{ joke.dislikes }}</button>
+                        <p *ngIf="joke.likes >= joke.dislikes + 10"><span style="background-color: blue; color: white; border-radius: 5px; padding: 5px; font-size: 12px; margin-right: 20px;"> 🤩 Community approved </span></p>
+                        <p [ngClass]="{ 'like-difference': joke.likes > joke.dislikes, 'dislike-difference': joke.likes < joke.dislikes }"><b>{{ joke.likes - joke.dislikes }}</b></p>
+                    </div>
+                <pre style="margin-top: 10px;">{{joke.joke}}</pre>
+            </div>
+        </div>
+    </div>
+</div>
