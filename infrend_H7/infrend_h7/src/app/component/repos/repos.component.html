@@ -1,0 +1,15 @@
+<div class="row-mt-2">
+    <div class="col-md-6">
+        <h3 style="margin-top: 25px;">Search Repositories</h3>
+        <input style="width: 500px; border-width: medium; margin-top: 10px;" type="text" class="border rounded w-full py-2 px-3" id="repos" name="repos" [(ngModel)]="repo" placeholder="Search repos">
+        <button style="margin-left: 30px;" (click)="searchRepos()" class="btn btn-primary text-white font-bold py-2 px-4 rounded">Search</button>
+        <div *ngIf="repos">
+            <h3>Repositories</h3>
+            <ul>
+                <li *ngFor="let repo of repos">
+                <a style="font-size: 18px;" href="{{ repo.html_url }}" target="_blank">{{ repo.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

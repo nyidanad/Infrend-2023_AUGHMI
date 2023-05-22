@@ -1,0 +1,20 @@
+<div class="row-mt-2">
+    <div class="col-md-6">
+        <h3 style="margin-top: 25px;">Search Repository</h3>
+        <input style="width: 500px; border-width: medium; margin-top: 10px ; margin-bottom: 15px;" type="text" class="border rounded w-full py-2 px-3" id="name" name="name" [(ngModel)]="username" placeholder="Username">
+        <input style="width: 500px; border-width: medium;" type="text" class="border rounded w-full py-2 px-3" id="repo" name="repo" [(ngModel)]="reponame" placeholder="Repository">
+        <button style="margin-left: 30px;" (click)="searchRepo()" class="btn btn-primary text-white font-bold py-2 px-4 rounded">Search</button>
+        <div *ngIf="repo">
+            <h2>{{ username }}'s repository: {{ repo.name }}</h2>
+    <pre>
+    URL:            <a href="{{ repo.html_url }}" target="_blank">{{ repo.html_url }}</a>
+    Created:        {{ repo.created_at }}
+    Updated:        {{ repo.updated_at }}
+    Language:       {{ repo.language }}
+    Watchers:       {{ repo.watchers_count }}
+    Stars:          {{ repo.stargazers_count }}
+    Description:    {{ repo.description }}
+    </pre>
+        </div>
+    </div>
+</div>
