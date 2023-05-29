@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <h2 style="text-align: center; margin-bottom: 20px;">📋 TODO APP</h2>
+  <button class="btn btn-light" (click)="loadExpiredList()">{{ showExpiredTodos ? 'Show All' : 'Expired' }}</button>
+  <button class="btn btn-outline-success" (click)="create()" style="margin-left: 15px;">Add</button>
+  <table class="table" style="margin-top: 20px;">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Deadline</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let todo of todos">
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.description }}</td>
+        <td>{{ todo.deadline | date }}</td>
+        <td>{{ todo.status ? '✔️' : ' ' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary" (click)="edit(todo)" style="margin-right: 10px;">Edit</button>
+          <button class="btn btn-sm btn-outline-danger" (click)="delete(todo)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,11 @@
+<div class="container mt-4">
+    <h2>TODO Details</h2>
+    <div *ngIf="todo">
+      <h4>Title: {{ todo.title }}</h4>
+      <p>Description: {{ todo.description }}</p>
+      <p>Deadline: {{ todo.deadline | date }}</p>
+      <p>Completed: {{ todo.status ? 'Yes' : 'No' }}</p>
+    </div>
+    <button class="btn btn-outline-secondary" (click)="goBack()">Back to List</button>
+</div>
+  
