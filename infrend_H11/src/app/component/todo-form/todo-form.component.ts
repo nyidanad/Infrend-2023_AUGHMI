@@ -31,17 +31,8 @@ export class TodoFormComponent implements OnInit {
 
   loadDetails(id: string) {
     this.todoService.getOne(id).subscribe((todo) => {
-      this.todo = { ...todo, deadline: this.formatDate(todo.deadline) };
+      this.todo = { ...todo };
     });
-  }
-
-  formatDate(date: string): string {
-    const formattedDate = new Date(date);
-    const year = formattedDate.getFullYear();
-    const month = ('0' + (formattedDate.getMonth() + 1)).slice(-2);
-    const day = ('0' + formattedDate.getDate()).slice(-2);
-
-    return `${year}-${month}-${day}`;
   }
 
   submitForm() {
@@ -53,22 +44,16 @@ export class TodoFormComponent implements OnInit {
   }
 
   create() {
-    const formattedDeadline = this.formatDate(this.todo.deadline);
-
     this.todoService.create({
       ...this.todo,
-      deadline: formattedDeadline,
     }).subscribe(() => {
       this.router.navigate(['/todos']);
     });
   }
 
   update() {
-    const formattedDeadline = this.formatDate(this.todo.deadline);
-
     this.todoService.update({
       ...this.todo,
-      deadline: formattedDeadline,
     }).subscribe(() => {
       this.router.navigate(['/todos']);
     });

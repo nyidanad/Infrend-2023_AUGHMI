@@ -16,7 +16,7 @@
       <tr *ngFor="let todo of todos">
         <td>{{ todo.title }}</td>
         <td>{{ todo.description }}</td>
-        <td>{{ todo.deadline | date }}</td>
+        <td>{{ todo.deadline | date: 'yyyy-MM-dd HH:mm' }}</td>
         <td>{{ todo.status ? '✔️' : ' ' }}</td>
         <td>
           <button class="btn btn-sm btn-outline-primary" (click)="edit(todo)" style="margin-right: 10px;">Edit</button>
