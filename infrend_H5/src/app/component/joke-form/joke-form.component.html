@@ -1,0 +1,17 @@
+<div class="row-mt-2">
+  <div class="col-md-6">
+      <h4 style="margin-top: 50px;">New joke</h4>
+      <hr>
+      <div class="mb-3">
+          <input style="width: 100%; border-width: medium;" type="text" class="border rounded w-full py-2 px-3" id="username" name="username" [(ngModel)]="newJoke.username" placeholder="Username">
+      </div>
+
+      <div class="mb-2">
+          <textarea style="width: 100%; border-width: medium;" rows="4" class="border rounded w-full py-2 px-3" id="joke" name="joke" [(ngModel)]="newJoke.joke" placeholder="Joke"> </textarea>
+      </div>
+          
+      <div class="mb-2">
+          <button (click)="add()" class="btn btn-outline-primary" style="float: right;">Submit</button>
+      </div>
+  </div>
+</div>
