@@ -1,0 +1,36 @@
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <h4>Kölcsönzés</h4>
+        <hr>
+    </div>
+</div>
+  
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <form [formGroup]="rentalForm">
+            <div class="mb-3">
+                <label for="rentalDate" class="form-label">Kölcsönzés dátuma</label>
+                <input type="date" class="form-control" id="rentalDate" name="rentalDate" formControlName="rentalDate">
+            </div>
+
+            <div class="mb-3">
+                <label for="customers" class="form-label">Ügyfelek</label>
+                <select class="form-select" id="customers" formControlName="customers" [compareWith]="compareObjects">
+                    <option [ngValue]="{ id: customer.id }" *ngFor="let customer of customers"> {{ customer.fname }} {{ customer.lname }} </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="vehicles" class="form-label">Járművek</label>
+                <select class="form-select" id="vehicles" formControlName="vehicles" [compareWith]="compareObjects">
+                    <option [ngValue]="{ id: vehicle.id }" *ngFor="let vehicle of vehicles"> {{ vehicle.brand + ' ' + vehicle.type }} </option>
+                </select>
+            </div>
+
+            <div class="text-end">
+                <button class="btn btn-outline-secondary" style="float: right;" (click)="cancel()">Mégse</button>
+                <button class="btn btn-outline-success" style="margin-bottom: 20px; margin-right: 15px;" (click)="save()">Mentés</button>
+            </div>
+        </form>
+    </div>
+</div>

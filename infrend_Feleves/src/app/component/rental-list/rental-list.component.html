@@ -1,0 +1,28 @@
+<div style="display: flex; align-items: center;">
+    <h2 style="margin-right: 25px;">Kölcsönzések</h2>
+    <button class="btn btn-sm btn-outline-success" style="width: 50px;" (click)="create()">Új</button>
+  </div>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Kölcsönző</th>
+      <th>Jármű</th>
+      <th>KM állás</th>
+      <th>Kölcsönzés dátuma</th>
+      <th>Műveletek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rental of rentals">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary" (click)="edit(rental)">Szerkesztés</button>
+        <button class="btn btn-sm btn-outline-danger" (click)="delete(rental)" style="margin-left: 10px;">Törlés</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

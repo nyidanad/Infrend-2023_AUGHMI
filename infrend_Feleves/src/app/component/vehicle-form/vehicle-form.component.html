@@ -1,0 +1,66 @@
+<div class="row justify-content-md-center">
+  <div class="col-md-6">
+      <h4>Autó adatok</h4>
+      <hr>
+  </div>
+</div>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-6">
+    <form [formGroup]="vehicleForm">
+      <div class="mb-3">
+        <label for="brand" class="form-label">Márka</label>
+        <input type="text" class="form-control" id="brand" name="brand" formControlName="brand">
+      </div>
+
+      <div class="mb-3">
+        <label for="type" class="form-label">Típus</label>
+        <input type="text" class="form-control" id="type" name="type" formControlName="type">
+      </div>
+
+      <div class="mb-3">
+        <label for="regNum" class="form-label">Rendszám</label>
+        <input type="text" class="form-control" id="regNum" name="regNum" formControlName="regNum">
+      </div>
+
+      <div class="mb-3">
+        <label for="purchaseDate" class="form-label">Beszerzés dátuma</label>
+        <input type="date" class="form-control" id="purchaseDate" name="purchaseDate" formControlName="purchaseDate">
+      </div>
+
+      <div class="mb-3">
+        <label for="rentalFee" class="form-label">Kölcsönzési díj</label>
+        <div class="input-group">
+          <input type="number" step="1" class="form-control text-end pe-1" id="rentalFee" name="rentalFee" formControlName="rentalFee">
+          <span class="input-group-text">Ft</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="mileage" class="form-label">Km állás</label>
+        <div class="input-group">
+          <input type="number" step="1" class="form-control text-end pe-1" id="mileage" name="mileage" formControlName="mileage">
+          <span class="input-group-text">km</span>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="status" class="form-label">Státusz</label>
+        <select class="form-select" id="status" formControlName="status" [compareWith]="compareObjects">
+          <option value="Szabad">Szabad</option>
+          <option value="Kikölcsönzött">Kikölcsönzött</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="imgUrl" class="form-label">Kép link</label>
+        <input type="text" class="form-control" id="imgUrl" name="imgUrl" formControlName="imgUrl">
+      </div>
+
+      <div class="text-end">
+        <button class="btn btn-outline-secondary" style="float: right;" (click)="cancel()">Mégse</button>
+        <button class="btn btn-outline-success" style="margin-bottom: 20px; margin-right: 15px;" (click)="save()">Mentés</button>
+      </div>
+    </form>
+  </div>
+</div>

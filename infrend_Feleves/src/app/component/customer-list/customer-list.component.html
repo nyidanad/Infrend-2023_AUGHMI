@@ -1,0 +1,37 @@
+<div style="display: flex; align-items: center;">
+    <h2 style="margin-right: 25px;">Ügyfelek</h2>
+    <button class="btn btn-sm btn-outline-success" style="width: 50px;" (click)="create()">Új</button>
+  </div>
+<hr>
+
+<div class="row">
+  <div class="col-md-4 mb-3">
+    <input type="text" class="form-control" [(ngModel)]="filteredString" placeholder="Keresés..." style="margin-bottom: 50px;"/>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Vezetéknév</th>
+      <th>Keresztnév</th>
+      <th>Cím</th>
+      <th>Személyi igazolvány szám</th>
+      <th>Telefonszám</th>
+      <th>Műveletek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers | filterCustomer: filteredString">
+      <td>{{ customer.lname }}</td>
+      <td>{{ customer.fname }}</td>
+      <td>{{ customer.address }}</td>
+      <td>{{ customer.idCardNum }}</td>
+      <td>{{ customer.phone }}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary" (click)="edit(customer)">Szerkesztés</button>
+        <button class="btn btn-sm btn-outline-danger" (click)="delete(customer)" style="margin-left: 10px;">Törlés</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

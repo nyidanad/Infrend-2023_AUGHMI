@@ -1,0 +1,43 @@
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <h4>Ügyfél adatok</h4>
+        <hr>
+    </div>
+</div>
+  
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <form [formGroup]="customerForm">
+            <div class="row" style="margin-bottom: 15px;">
+                <div class="col">
+                <label for="lname" class="form-label">Vezetéknév</label>
+                <input type="text" class="form-control" id="lname" name="lname" formControlName="lname">
+                </div>
+                <div class="col">
+                <label for="fname" class="form-label">Keresztnév</label>
+                <input type="text" class="form-control" id="fname" name="fname" formControlName="fname">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Cím</label>
+                <input type="text" class="form-control" id="address" name="address" formControlName="address">
+            </div>
+
+            <div class="mb-3">
+                <label for="idCardNum" class="form-label">Személyi igazolvány szám</label>
+                <input type="text" class="form-control" id="idCardNum" name="idCardNum" formControlName="idCardNum">
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Telefonszám</label>
+                <input type="text" class="form-control" id="phone" name="phone" formControlName="phone">
+            </div>
+            
+            <div class="text-end">
+                <button class="btn btn-outline-secondary" style="float: right;" (click)="cancel()">Mégse</button>
+                <button class="btn btn-outline-success" style="margin-bottom: 20px; margin-right: 15px;" (click)="save()">Mentés</button>
+            </div>
+        </form>
+    </div>
+</div>
