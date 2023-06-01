@@ -25,19 +25,19 @@ export function getRoutes() {
 
     const rentalController = new RentalController();
 
-    router.get('/rentals', vehicleController.getAll);
-    router.get('/rentals/:id', vehicleController.getOne);
-    router.post('/rentals', vehicleController.create);
-    router.put('/rentals', vehicleController.update);
-    router.delete('/rentals/:id', vehicleController.delete);
+    router.get('/rentals', rentalController.getAll);
+    router.get('/rentals/:id', rentalController.getOne);
+    router.post('/rentals', rentalController.create);
+    router.put('/rentals', rentalController.update);
+    router.delete('/rentals/:id', rentalController.delete);
 
     const retrieveController = new RetrieveController();
 
-    router.get('/retrieves', vehicleController.getAll);
-    router.get('/retrieves/:id', vehicleController.getOne);
-    router.post('/retrieves', vehicleController.create);
-    router.put('/retrieves', vehicleController.update);
-    router.delete('/retrieves/:id', vehicleController.delete);
+    router.get('/retrieves', retrieveController.getAll);
+    router.get('/retrieves/:id', retrieveController.getOne);
+    router.post('/retrieves', retrieveController.create);
+    router.put('/retrieves', retrieveController.update);
+    router.delete('/retrieves/:id', retrieveController.delete);
 
     return router;
 }
