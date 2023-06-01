@@ -8,20 +8,22 @@
     <tr>
       <th>Kölcsönző</th>
       <th>Jármű</th>
-      <th>KM állás</th>
+      <th>Rendszám</th>
+      <th>Km állás</th>
       <th>Kölcsönzés dátuma</th>
       <th>Műveletek</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let rental of rentals">
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{ rental.customers.lname }} {{ rental.customers.fname }}</td>
+      <td>{{ rental.vehicles.brand + ' ' + rental.vehicles.type }}</td>
+      <td>{{ rental.vehicles.regNum }}</td>
+      <td>{{ rental.vehicles.mileage }} km</td>
+      <td>{{ rental.rentalDate | date: 'yyyy.MM.dd.'}}</td>
       <td>
-        <button class="btn btn-sm btn-outline-primary" (click)="edit(rental)">Szerkesztés</button>
-        <button class="btn btn-sm btn-outline-danger" (click)="delete(rental)" style="margin-left: 10px;">Törlés</button>
+        <button class="btn btn-sm" (click)="edit(rental)">✏️</button>
+        <button class="btn btn-sm" (click)="delete(rental)" style="margin-left: 10px;">🗑</button>
       </td>
     </tr>
   </tbody>

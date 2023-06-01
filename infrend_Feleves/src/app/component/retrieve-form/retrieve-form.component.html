@@ -1,1 +1,45 @@
-<p>retrieve-form works!</p>
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <h4>Visszahozatal</h4>
+        <hr>
+    </div>
+</div>
+  
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <form [formGroup]="retrieveForm">
+            <div class="mb-3">
+                <label for="rentals" class="form-label">Kölcsönzések</label>
+                <select class="form-select" id="rentals" formControlName="rentals" [compareWith]="compareObjects">
+                    <option [ngValue]="{ id: rental.id }" *ngFor="let rental of rentals"> {{ rental.customers.lname }} {{ rental.customers.fname }} : {{ rental.vehicles.regNum }}</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="retrieveDate" class="form-label">Visszahozatal dátuma</label>
+                <input type="date" class="form-control" id="retrieveDate" name="retrieveDate" formControlName="retrieveDate">
+            </div>
+
+            <div class="mb-3">
+                <label for="retrieveMileage" class="form-label">Km állás</label>
+                <div class="input-group">
+                  <input type="number" step="1" class="form-control text-end pe-1" id="retrieveMileage" name="retrieveMileage" formControlName="retrieveMileage">
+                  <span class="input-group-text">km</span>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="damaged" class="form-label">Sérült</label>
+                <select class="form-select" id="damaged" formControlName="damaged" [compareWith]="compareObjects">
+                  <option [ngValue]="false">Hibátlan</option>
+                  <option [ngValue]="true">Sérült</option>
+                </select>
+            </div>
+
+            <div class="text-end">
+                <button class="btn btn-outline-secondary" style="float: right;" (click)="cancel()">Mégse</button>
+                <button class="btn btn-outline-success" style="margin-bottom: 20px; margin-right: 15px;" (click)="save()">Mentés</button>
+            </div>
+        </form>
+    </div>
+</div>

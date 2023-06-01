@@ -1,1 +1,36 @@
-<p>retrieve-list works!</p>
+<div style="display: flex; align-items: center;">
+    <h2 style="margin-right: 25px;">Visszahozatal</h2>
+    <button class="btn btn-sm btn-outline-success" style="width: 50px;" (click)="create()">Új</button>
+  </div>
+<hr>
+<table class="table" style="font-size: 12px;">
+  <thead>
+    <tr>
+      <th>Ügyfél</th>
+      <th>Rendszám</th>
+      <th>Kölcsönzés dátuma</th>
+      <th>Visszahozatal dátuma</th>
+      <th>Km állás (régi)</th>
+      <th>Km állás (most)</th>
+      <th>Sérült</th>
+      <th>Végösszeg</th>
+      <th>Műveletek</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let retrieve of retrieves">
+      <td>{{ retrieve.customers?.fname }} {{ retrieve.customers?.lname }}</td>
+      <td>{{ retrieve.vehicles?.regNum }}</td>
+      <td>{{ retrieve.rentals?.rentalDate | date: 'yyyy.MM.dd.'}}</td>
+      <td>{{ retrieve.retrieveDate | date: 'yyyy.MM.dd.'}}</td>
+      <td>{{ retrieve.rentals?.vehicles?.mileage }} km</td>
+      <td>{{ retrieve.retrieveMileage }} km</td>
+      <td>{{ retrieve.damaged ? '✔️' : ' '  }}</td>
+      <td>{{ retrieve.sum }} Ft</td>
+      <td>
+        <button class="btn btn-sm" (click)="edit(retrieve)">✏️</button>
+        <button class="btn btn-sm" (click)="delete(retrieve)" style="margin-left: 10px;">🗑</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

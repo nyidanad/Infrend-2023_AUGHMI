@@ -13,6 +13,10 @@ export class VehicleService {
     return this.http.get<VehicleDTO[]>('/api/vehicles');
   }
 
+  getAllFree(status: string) {
+    return this.http.get<VehicleDTO[]>('/api/vehicles/' + status);
+  }
+
   getOne(id: number) {
     return this.http.get<VehicleDTO>('/api/vehicles/' + id);
   }

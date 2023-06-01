@@ -16,14 +16,14 @@
             <div class="mb-3">
                 <label for="customers" class="form-label">Ügyfelek</label>
                 <select class="form-select" id="customers" formControlName="customers" [compareWith]="compareObjects">
-                    <option [ngValue]="{ id: customer.id }" *ngFor="let customer of customers"> {{ customer.fname }} {{ customer.lname }} </option>
+                    <option [ngValue]="{ id: customer.id }" *ngFor="let customer of customers"> {{ customer.lname }} {{ customer.fname }} </option>
                 </select>
             </div>
 
             <div class="mb-3">
                 <label for="vehicles" class="form-label">Járművek</label>
                 <select class="form-select" id="vehicles" formControlName="vehicles" [compareWith]="compareObjects">
-                    <option [ngValue]="{ id: vehicle.id }" *ngFor="let vehicle of vehicles"> {{ vehicle.brand + ' ' + vehicle.type }} </option>
+                    <option [ngValue]="{ id: vehicle.id }" *ngFor="let vehicle of vehicles | filterStatus: filteredString ">{{ vehicle.regNum }} - {{ vehicle.brand + ' ' + vehicle.type }}</option>
                 </select>
             </div>
 

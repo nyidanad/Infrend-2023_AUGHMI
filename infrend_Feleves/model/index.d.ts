@@ -28,8 +28,11 @@ export interface RentalDTO {
 
 export interface RetrieveDTO {
     id: number;
+    retrieveDate: Date;
+    retrieveMileage: number;
     damaged: boolean;
     sum: number;
     rentals: RentalDTO;
+    customers: CustomerDTO,
     vehicles: VehicleDTO;
 }

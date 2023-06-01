@@ -17,12 +17,12 @@ export class RetrieveService {
     return this.http.get<RetrieveDTO>('/api/retrieves/' + id);
   }
 
-  create(rental: RetrieveDTO) {
-    return this.http.post<RetrieveDTO>('/api/retrieves', rental);
+  create(retrieve: RetrieveDTO) {
+    return this.http.post<RetrieveDTO>('/api/retrieves', retrieve);
   }
 
-  update(rental: RetrieveDTO) {
-    return this.http.put<RetrieveDTO>('/api/retrieves', rental);
+  update(retrieve: RetrieveDTO) {
+    return this.http.put<RetrieveDTO>('/api/retrieves', retrieve);
   }
 
   delete(id: number) {

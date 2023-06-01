@@ -19,6 +19,7 @@ import { RetrieveListComponent } from './component/retrieve-list/retrieve-list.c
 import { RetrieveFormComponent } from './component/retrieve-form/retrieve-form.component';
 import { FilterVehiclePipe } from './pipe/filter-vehicle.pipe';
 import { FilterCustomerPipe } from './pipe/filter-customer.pipe';
+import { FilterStatusPipe } from './pipe/filter-status.pipe';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FilterCustomerPipe } from './pipe/filter-customer.pipe';
     RentalListComponent,
     RentalFormComponent,
     RetrieveListComponent,
-    RetrieveFormComponent
+    RetrieveFormComponent,
+    FilterStatusPipe
   ],
   imports: [
     BrowserModule,

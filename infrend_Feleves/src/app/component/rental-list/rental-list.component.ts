@@ -21,9 +21,9 @@ export class RentalListComponent {
 
   ngOnInit(): void {
     this.rentalService.getAll().subscribe({
-      next: (retals) => {
-        this.rentals = retals;
-        console.log(retals);
+      next: (rentals) => {
+        this.rentals = rentals;
+        console.log(rentals);
       },
       error: (err) => console.error(err)
     });

@@ -7,11 +7,13 @@ import { RentalService } from 'src/app/service/rental.service';
 import { CustomerService } from 'src/app/service/customer.service';
 import { VehicleService } from 'src/app/service/vehicle.service';
 import { ToastrService } from 'ngx-toastr';
+import { FilterStatusPipe } from 'src/app/pipe/filter-status.pipe';
 
 @Component({
   selector: 'app-rental-form',
   templateUrl: './rental-form.component.html',
-  styleUrls: ['./rental-form.component.css']
+  styleUrls: ['./rental-form.component.css'],
+  providers: [FilterStatusPipe]
 })
 export class RentalFormComponent implements OnInit{
   rentalForm = this.formBuilder.group({
@@ -22,10 +24,11 @@ export class RentalFormComponent implements OnInit{
   });
 
   isNewRental = true;
+  filteredString: string = 'Szabad';
 
   rentals!: RentalDTO[];
-  customers!: CustomerDTO[];
-  vehicles!: VehicleDTO[];
+  customers: CustomerDTO[] = [];
+  vehicles: VehicleDTO[] = [];
 
   constructor (
     private router: Router,
@@ -53,23 +56,23 @@ export class RentalFormComponent implements OnInit{
           this.toastrService.error('Hiba a kölcsönzések betöltésekor.', 'Hiba');
         }
       });
-
-      this.customerService.getAll().subscribe({
-        next: (customers) => this.customers = customers,
-        error: (err) => {
-          console.error(err);
-          this.toastrService.error('Hiba az ügyfelek betöltésekor.', 'Hiba');
-        }
-      });
-
-      this.vehicleService.getAll().subscribe({
-        next: (vehicles) => this.vehicles = vehicles,
-        error: (err) => {
-          console.error(err);
-          this.toastrService.error('Hiba az járműadatok betöltésekor.', 'Hiba');
-        }
-      });
     }
+    
+    this.customerService.getAll().subscribe({
+      next: (customers) => this.customers = customers,
+      error: (err) => {
+        console.error(err);
+        this.toastrService.error('Hiba az ügyfelek betöltésekor.', 'Hiba');
+      }
+    });
+
+    this.vehicleService.getAll().subscribe({
+      next: (vehicles) => this.vehicles = vehicles,
+      error: (err) => {
+        console.error(err);
+        this.toastrService.error('Hiba a járműadatok betöltésekor.', 'Hiba');
+      }
+    });
   }
 
   save() {
